@@ -78,6 +78,7 @@ img {
   display: flex;
   margin-top: 4px;
   margin-bottom: 4px;
+  max-width: 280px;
 }
 .loader {
   font-size: 10px;
