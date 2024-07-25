@@ -17,10 +17,12 @@ const formEl = document.querySelector('.form');
 const loaderEl = document.querySelector('.loader');
 const inputEl = document.querySelector('input');
 
+loaderEl.style.display = 'none';
+
 formEl.addEventListener('submit', event => {
   event.preventDefault();
   galleryEl.innerHTML = '';
-  loaderEl.classList.add('is-open');
+  loaderEl.style.display = 'block';
   const inputValue = inputEl.value.trim();
   if (inputValue === '') {
     loaderEl.classList.remove('is-open');
@@ -28,9 +30,10 @@ formEl.addEventListener('submit', event => {
   }
   getImages(inputValue)
     .then(response => {
+      loaderEl.style.display = 'none';
       if (response.hits.length === 0) {
         return iziToast.info({
-          title: 'Sorry',
+          title: 'Error',
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
@@ -41,7 +44,7 @@ formEl.addEventListener('submit', event => {
     .catch(error => {
       console.error('Error fetching images:', error);
     })
-    .finally(() => loaderEl.classList.remove('is-open'));
+    .finally(() => (loaderEl.style.display = 'none'));
   inputEl.value = '';
 });
 new SimpleLightbox('.gallery-li', {
