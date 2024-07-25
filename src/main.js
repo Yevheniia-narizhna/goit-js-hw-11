@@ -1,8 +1,8 @@
 import './js/pixabay-api';
 import { getImages } from './js/pixabay-api';
-import './js/render-function';
-import { createMarkUp } from './js/render-function';
-import { galleryEl } from './js/render-function';
+import './js/render-functions';
+import { createMarkUp } from './js/render-functions';
+import { galleryEl } from './js/render-functions';
 
 // Описаний у документації
 import iziToast from 'izitoast';
@@ -17,10 +17,9 @@ const formEl = document.querySelector('.form');
 const loaderEl = document.querySelector('.loader');
 const inputEl = document.querySelector('input');
 
-formEl.addEvenListener('submit', event => {
+formEl.addEventListener('submit', event => {
   event.preventDefault();
   galleryEl.innerHTML = '';
-  lightbox.refresh();
   loaderEl.classList.add('is-open');
   const inputValue = inputEl.value.trim();
   if (inputValue === '') {
