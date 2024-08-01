@@ -24,8 +24,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
 body {
   background-color: #302546;
+  min-height: 100vh;
 }
 p {
   padding-right: 4px;
